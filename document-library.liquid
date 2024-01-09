@@ -1,0 +1,202 @@
+{% assign items = '' %}
+{% assign downloads = '' %}
+
+{% assign items = items | append: 'LuxCoat ASP 90 Technical Datasheet' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/TDS_-_ASP_90_-_2019-04-07.pdf?v=1704334320'
+  | append: '|'
+%}
+{% assign items = items | append: 'LuxCoat ASP 90 Safety Datasheet Part A' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/SDS_-_ASP_90_Part_A_-_2021-10-14.pdf?v=1704334868'
+  | append: '|'
+%}
+{% assign items = items | append: 'LuxCoat ASP 90 Safety Datasheet Part B' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/SDS_-_ASP_90_Part_B_-_2022-07-14.pdf?v=1704334869'
+  | append: '|'
+%}
+
+{% assign items = items | append: 'LuxCoat EPO-BASE SL100 Technical Datasheet' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/TDS_-_EPO-Base_SL100_-_2019-07-17.pdf?v=1704334980'
+  | append: '|'
+%}
+{% assign items = items | append: 'LuxCoat EPO-BASE SL100 Safety Datasheet Part A' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/SDS_-_EPO-Base_SL100_Part_A_-_2022-07-14.pdf?v=1704334980'
+  | append: '|'
+%}
+{% assign items = items | append: 'LuxCoat EPO-BASE SL100 Safety Datasheet Part B' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/SDS_-_EPO-Base_SL100_Part_B_-_2022-07-14.pdf?v=1704334980'
+  | append: '|'
+%}
+
+{% assign items = items | append: 'Kirkside K-Fill Technical Datasheet' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/Kfill-Tech-14.pdf?v=1704335656'
+  | append: '|'
+%}
+{% assign items = items | append: 'Kirkside K-Fill Safety Datasheet' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/Kfill-MSDS-14.pdf?v=1704335657'
+  | append: '|'
+%}
+
+{% assign items = items | append: 'Torginal Polypropylene Technical Datasheet' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/POLYPROPYLENE-TDS.pdf?v=1704335922'
+  | append: '|'
+%}
+{% assign items = items | append: 'Torginal Polypropylenel Safety Datasheet' | append: '|' %}
+{% assign downloads = downloads
+  | append: 'https://cdn.shopify.com/s/files/1/0613/1797/2152/files/POLYPROPYLENE-SDS.pdf?v=1704335932'
+  | append: '|'
+%}
+
+{% assign items = items | split: '|' %}
+{% assign downloads = downloads | split: '|' %}
+
+<div class="section color-background-1">
+  <div class="container container narrow">
+    <div class="block-section">
+      <div class="section-rich-text rich-text rich-text-align-center">
+        <h2>Datasheet Directory</h2>
+        <div class="">
+          <p>Use the search function below to find technical or safety datasheets.</p>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="datasheet__search">
+        <label hidden for="searchbox" class="">Datasheet Search</label>
+        <input
+          type="search"
+          id="searchbox"
+          placeholder="Datasheet Keyword Search..."
+        >
+      </div>
+      <ul role="list" class="datasheet__list">
+        {% for item in items %}
+          <li class="datasheet__item">
+            <div class="datasheet__download">
+              <p class="datasheet__download--title">
+                <strong>{{ item }}</strong>
+              </p>
+              <a href="{{ downloads[forloop.index0] }}" target="_blank" class="datasheet__download--link"
+                ><strong>Download</strong>
+                <span class="datasheet__download--icon"> {% render 'icon-document' %} </span></a
+              >
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</div>
+{% style %}
+  .is-hidden {
+    display: none;
+  }
+
+  .datasheet__search {
+    width: 100%;
+    max-width: 50rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+  }
+
+  .datasheet__search > input {
+    border: 1px solid #f3f4f6;
+    border-radius: 4px;
+    padding: 2rem 1rem;
+  }
+
+  ul.datasheet__list {
+    list-style: none;
+    padding-left: 0px !important;
+    margin-bottom: 6rem;
+    border: 1px solid #f3f4f6;
+    border-radius: 4px;
+  }
+
+  li.datasheet__item {
+    padding: 2rem 3rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  li.datasheet__item:last-of-type {
+    border-bottom: none;
+  }
+
+  .datasheet__download {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+  }
+
+  @media screen and (max-width: 540px) {
+    .datasheet__download {
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  p.datasheet__download--title {
+    margin: 0;
+  }
+
+  .datasheet__download--icon {
+    display: flex;
+    position: relative;
+    bottom: 1px;
+    width: 2rem;
+    height: 2rem;
+    line-height: 1;
+    margin-left: 0.4rem;
+    fill: #d91418;
+  }
+
+  .datasheet__download--icon > svg > path {
+    fill: #d91418;
+  }
+
+  a.datasheet__download--link {
+    display: flex;
+    color: #d91418;
+  }
+
+  .datasheet__download:hover a.datasheet__download--link,
+  .datasheet__download:hover .datasheet__download--icon > svg > path {
+    color: #910d10;
+    fill: #910d10;
+  }
+{% endstyle %}
+
+<script>
+  let cards = document.querySelectorAll('.datasheet__item');
+
+  function liveSearch() {
+    let search_query = document.getElementById('searchbox').value;
+
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].textContent.toLowerCase().includes(search_query.toLowerCase())) {
+        cards[i].classList.remove('is-hidden');
+      } else {
+        cards[i].classList.add('is-hidden');
+      }
+    }
+  }
+
+  let typingTimer;
+  let typeInterval = 500;
+  let searchInput = document.getElementById('searchbox');
+
+  searchInput.addEventListener('keyup', () => {
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(liveSearch, typeInterval);
+  });
+</script>
