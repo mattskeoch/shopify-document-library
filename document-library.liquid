@@ -177,23 +177,19 @@
 {% endstyle %}
 
 <script>
-  let cards = document.querySelectorAll('.datasheet__item');
+  const cards = document.querySelectorAll('.datasheet__item');
+  const searchInput = document.getElementById('searchbox');
+  const typeInterval = 500;
+  let typingTimer;
 
   function liveSearch() {
-    let search_query = document.getElementById('searchbox').value;
+    const searchQuery = searchInput.value.toLowerCase();
 
-    for (var i = 0; i < cards.length; i++) {
-      if (cards[i].textContent.toLowerCase().includes(search_query.toLowerCase())) {
-        cards[i].classList.remove('is-hidden');
-      } else {
-        cards[i].classList.add('is-hidden');
-      }
-    }
+    cards.forEach((card) => {
+      const text = card.textContent.toLowerCase();
+      card.classList.toggle('is-hidden', !text.includes(searchQuery));
+    });
   }
-
-  let typingTimer;
-  let typeInterval = 500;
-  let searchInput = document.getElementById('searchbox');
 
   searchInput.addEventListener('keyup', () => {
     clearTimeout(typingTimer);
